@@ -40,7 +40,7 @@ public static class VideoEndpoint
             new Video { Id = 3, Title = "VideoThree", Description = "Video3 Description here" }
         };
 
-        group.MapGet("/getvideodata", () => Results.Ok(videoList))
+        group.MapGet("/getvideos", () => Results.Ok(videoList))
             .WithName("GetVideos");
         
         // DTODO this should be in user api enpoint not videos

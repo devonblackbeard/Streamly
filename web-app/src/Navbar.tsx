@@ -36,18 +36,20 @@ const AppNavbar = () => {
 
         <Navbar.Toggle aria-controls="navbar-nav" />
         <Navbar.Collapse id="navbar-nav">
-          <Form className="d-flex mx-auto w-50" onSubmit={handleSearch}>
-            <FormControl
-              type="search"
-              placeholder="Search..."
-              className="me-2"
-              value={searchValue}
-              onChange={(e) => setSearchValue(e.target.value)}
-            />
-            <Button variant="outline-light" type="submit">
-              <FaSearch />
-            </Button>
-          </Form>
+          <div style={{ display: "flex", justifyContent: "center", flex: 1 }}>
+            <Form className="d-flex w-50" onSubmit={handleSearch}>
+              <FormControl
+                type="search"
+                placeholder="Search..."
+                className="me-2"
+                value={searchValue}
+                onChange={(e) => setSearchValue(e.target.value)}
+              />
+              <Button variant="outline-light" type="submit">
+                <FaSearch />
+              </Button>
+            </Form>
+          </div>
 
           <Nav className="ms-auto">
             <Nav.Link href="/" className="text-white">

@@ -24,7 +24,7 @@ const Sidebar = () => {
   }, []);
 
   return (
-    <div className="p-2">
+    <div className="p-3">
       <div>
         <div className="mb-2">
           Subscriptions <FaChevronRight />
