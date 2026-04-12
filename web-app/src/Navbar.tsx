@@ -7,6 +7,7 @@ import {
   Nav,
 } from "react-bootstrap";
 import { useState } from "react";
+import { FaSearch, FaUser } from "react-icons/fa";
 
 const AppNavbar = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -26,7 +27,10 @@ const AppNavbar = () => {
       }}
     >
       <Container fluid>
-        <Navbar.Brand href="/" style={{ fontWeight: 600, fontSize: "1.3rem", color: "#fff" }}>
+        <Navbar.Brand
+          href="/"
+          style={{ fontWeight: 600, fontSize: "1.3rem", color: "#fff" }}
+        >
           Streamly
         </Navbar.Brand>
 
@@ -41,19 +45,13 @@ const AppNavbar = () => {
               onChange={(e) => setSearchValue(e.target.value)}
             />
             <Button variant="outline-light" type="submit">
-              Search
+              <FaSearch />
             </Button>
           </Form>
 
           <Nav className="ms-auto">
             <Nav.Link href="/" className="text-white">
-              Home
-            </Nav.Link>
-            <Nav.Link href="/about" className="text-white">
-              About
-            </Nav.Link>
-            <Nav.Link href="/contact" className="text-white">
-              Contact
+              <FaUser />
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

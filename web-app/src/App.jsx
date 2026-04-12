@@ -1,24 +1,22 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "./assets/vite.svg";
-import heroImg from "./assets/hero.png";
 import "./App.css";
 import Navbar from "./Navbar";
+import Sidebar from "./Sidebar";
+import Videos from "./Videos";
 
 function App() {
   return (
     <>
       <Navbar />
-      <section id="center">
-        {/* <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+      <div className="d-flex">
+        <div
+          style={{ width: "220px", minHeight: "100vh", background: "#f8f9fa" }}
+        >
+          <Sidebar />
         </div>
-        <div>
-          <h1>WELCOME TO STREAMLY!</h1>
-        </div> */}
-      </section>
+        <main className="p-3">
+          <Videos />
+        </main>
+      </div>
     </>
   );
 }
