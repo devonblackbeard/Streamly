@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
-import {
-  FaArrowCircleLeft,
-  FaArrowRight,
-  FaChevronRight,
-} from "react-icons/fa";
+// import {
+//   FaArrowCircleLeft,
+//   FaArrowRight,
+//   FaChevronRight,
+// } from "react-icons/fa";
 
 const Sidebar = () => {
   const [subscriptions, setSubscriptions] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5210/api/videos/getsubscriptions")
+    fetch("http://localhost:5210/api/videos/subscriptions")
       .then((res) => res.json())
       .then((data) => {
         console.log("Subscription data:", data);
@@ -26,8 +26,8 @@ const Sidebar = () => {
   return (
     <div className="p-3">
       <div>
-        <div className="mb-2">
-          Subscriptions <FaChevronRight />
+        <div className="mb-2 fw-bold">
+          Subscriptions
         </div>
         {subscriptions?.length > 0 ? (
           <ul>
@@ -39,9 +39,9 @@ const Sidebar = () => {
           <p className="small">No subscriptions found.</p>
         )}
       </div>
-      <div className="mt-3">
-        You <FaChevronRight />
-      </div>
+      {/* <div className="mt-3">
+        You
+      </div> */}
     </div>
   );
 };

@@ -6,7 +6,7 @@ const Videos = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5210/api/videos/getvideos")
+    fetch("http://localhost:5210/api/videos/videos")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -29,9 +29,9 @@ const Videos = () => {
           {videos?.map((video) => (
             <div
               key={video.id}
-              style={{
-                flex: "1 1 calc(25% - 15px)",
-                minWidth: "200px",
+              style={{                
+                minWidth: "300px",
+                maxWidth: "300px",
                 padding: "12px",
                 border: "1px solid #ddd",
                 borderRadius: "8px",

@@ -7,10 +7,12 @@ import {
   Nav,
 } from "react-bootstrap";
 import { useState } from "react";
-import { FaSearch, FaUser } from "react-icons/fa";
+import { FaPlus, FaSearch, FaUser } from "react-icons/fa";
+import AddVideoModal from "./components/AddVideoModal";
 
 const AppNavbar = () => {
   const [searchValue, setSearchValue] = useState("");
+  const [showAddVideoModal, setShowAddVideoModal] = useState(false);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -51,13 +53,26 @@ const AppNavbar = () => {
             </Form>
           </div>
 
-          <Nav className="ms-auto">
+          <Nav>
+            <Nav.Link
+              className="text-white me-2"
+              onClick={() => setShowAddVideoModal(true)}
+            >
+              <FaPlus />
+            </Nav.Link>
+          </Nav>
+          <Nav>
             <Nav.Link href="/" className="text-white">
               <FaUser />
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
+
+      <AddVideoModal
+        show={showAddVideoModal}
+        onHide={() => setShowAddVideoModal(false)}
+      />
     </Navbar>
   );
 };

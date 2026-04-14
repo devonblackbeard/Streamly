@@ -1,9 +1,7 @@
 namespace Streamly.Models;
 
-public class Video
+public class CreateVideoDto
 {
-    public int Id { get; set; }
-
     public string ThumbnailUrl { get; set; } = null!;
 
     public string Title { get; set; } = null!;
@@ -11,6 +9,4 @@ public class Video
     public string Description { get; set; } = null!;
 
     public int ChannelId { get; set; }
-
-    public DateTime CreatedAt { get; set; }
 }
