@@ -1,2 +1,4 @@
-# Built using React + Vite, Dotnet 10, AWS (blob storage)
+# Welcome to Streamly! 
 
+Steamly is an in progress competitor to YouTube. Technologies used:
+Dotnet 10, React+Vite, Azure (blob storage)
