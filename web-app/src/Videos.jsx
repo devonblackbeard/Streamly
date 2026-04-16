@@ -6,7 +6,7 @@ const Videos = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5210/api/videos/videos")
+    fetch("http://localhost:5210/api/videos")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

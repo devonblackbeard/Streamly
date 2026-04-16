@@ -9,7 +9,7 @@ function App() {
       <Navbar />
       <div className="d-flex">
         <div
-          style={{ width: "220px", minHeight: "100vh", background: "#f8f9fa" }}
+          style={{ width: "320px", minHeight: "100vh", background: "#f8f9fa" }}
         >
           <Sidebar />
         </div>

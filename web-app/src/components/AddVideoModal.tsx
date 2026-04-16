@@ -11,6 +11,7 @@ const AddVideoModal = ({ show, onHide }: Props) => {
     thumbnailUrl: "",
     title: "",
     description: "",
+    file: null as File | null,
   });
 
   const handleChange = (
@@ -19,29 +20,40 @@ const AddVideoModal = ({ show, onHide }: Props) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const file = e.target.files[0];
+
+      setFormData((prev) => ({
+        ...prev,
+        video: file,
+      }));
+    }
+  };
+
   const handleSubmit = () => {
     console.log(formData);
 
-      fetch("http://localhost:5210/api/videos/videos", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          thumbnailUrl: formData.thumbnailUrl,
-          title: formData.title,
-          description: formData.description,
-          channelId: 1, // hardcode for now until you have auth
-        }),
+    fetch("http://localhost:5210/api/videos/videos", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        thumbnailUrl: formData.thumbnailUrl,
+        title: formData.title,
+        description: formData.description,
+        channelId: 1, // hardcode for now until you have auth
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Video created:", data);
+        onHide();
       })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log("Video created:", data);
-          onHide();
-        })
-        .catch((err) => {
-          console.error("Error creating video:", err);
-        });
+      .catch((err) => {
+        console.error("Error creating video:", err);
+      });
     onHide();
   };
 
@@ -83,6 +95,16 @@ const AddVideoModal = ({ show, onHide }: Props) => {
               placeholder="Enter description"
               value={formData.description}
               onChange={handleChange}
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3">
+            <Form.Label>Video</Form.Label>
+            <Form.Control
+              type="file"
+              name="video"
+              accept="video/*"
+              onChange={handleFileChange}
             />
           </Form.Group>
         </Form>

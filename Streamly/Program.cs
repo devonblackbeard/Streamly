@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using Streamly.Api;
 using Streamly.Data;
+using Streamly.Features.Subscriptions;
+using Streamly.Features.Videos;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,10 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 // Add CORS
 builder.Services.AddCors();
+builder.Services.AddScoped<IVideoService, VideoService>();
+// builder.Services.AddScoped<IVideoService, VideoService>();
+
+
 
 var app = builder.Build();
 
@@ -25,16 +30,9 @@ app.UseCors(x => x
     .AllowAnyMethod()
     .WithOrigins("http://localhost:5173", "https://localhost:5173"));
 
-// var videoList = new List<Video>
-// {
-//     new Video {Id = 1, Title = "VideoOne", Description = "Video1 Description here", },
-//     new Video {Id = 2, Title = "VideoTwo", Description = "Video2 Description here", },
-//     new Video {Id = 3, Title = "VideoThree", Description = "Video3 Description here" }
-// };
-//
-// app.MapGet("/getvideodata", () => Results.Ok(videoList))
-//     .WithName("GetVideos");
 app.MapVideoEndpoints();
+app.MapSubscriptionEndpoints();
+
 
 
 app.Run();

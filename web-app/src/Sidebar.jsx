@@ -10,7 +10,7 @@ const Sidebar = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5210/api/videos/subscriptions")
+    fetch("http://localhost:5210/api/subscriptions")
       .then((res) => res.json())
       .then((data) => {
         console.log("Subscription data:", data);
